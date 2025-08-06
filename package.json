@@ -35,5 +35,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@mantine/core": "^8.2.2",
+    "@mantine/hooks": "^8.2.2",
+    "@tabler/icons-react": "^3.34.1",
+    "@tauri-apps/api": "^2.7.0",
+    "@tauri-apps/cli": "^2.7.1",
+    "cross-env": "^10.0.0"
   }
 }
