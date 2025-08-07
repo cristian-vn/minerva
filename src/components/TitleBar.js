@@ -1,5 +1,5 @@
-import { IconMaximize, IconMinus, IconX } from '@tabler/icons-react';
-import { Group, Text, Box, ActionIcon } from '@mantine/core';
+import { IconSettings2, IconMaximize, IconMinus, IconX } from '@tabler/icons-react';
+import { Group, Title, Box, ActionIcon } from '@mantine/core';
 import { getCurrentWindow } from "@tauri-apps/api/window";
 
 import "./TitleBar.css";
@@ -17,17 +17,13 @@ function TitleBar() {
         height: "36px"
       }}
     >
-      <Text
+      <Title order={5}
         data-tauri-drag-region
         userSelect="none"
-        color="white"
-        size="16px"
-        style={{
-          marginLeft: "12px"
-        }}
+        className="titlebar__title"
       >
         Minerva
-      </Text>
+      </Title>
 
       <Group
         spacing="xs"
@@ -35,10 +31,17 @@ function TitleBar() {
         gap="0"
         style={{
           marginLeft: "auto",
-          overflowY: "hidden",
           height: "100%"
         }}
       >
+        <ActionIcon
+          size="xs"
+          variant="subtle"
+          color="white"
+          className="titlebar__controls__button"
+        >
+          <IconSettings2 size={16} />
+        </ActionIcon>
         <ActionIcon
           onClick={() => appWindow.minimize()}
           size="xs"
