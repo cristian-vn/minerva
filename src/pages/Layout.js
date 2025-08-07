@@ -1,20 +1,14 @@
-import { useMantineTheme, AppShell, Title, Container, Tabs } from '@mantine/core';
+import { useMantineTheme, AppShell, Container, Tabs } from '@mantine/core';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Outlet  } from "react-router-dom";
 
-import { useEffect, useState } from 'react';
-import { invoke } from '@tauri-apps/api/core';
-
-import TitleBar from './components/TitleBar';
+import TitleBar from '../components/TitleBar';
 import classes from './HeaderTabs.module.css';
 
-function App() {
-  const [users, setUsers] = useState([]);
+function Layout() {
   const theme = useMantineTheme();
-
-  useEffect(() => {
-    invoke("get_users")
-      .then((res) => setUsers(res))
-      .catch((err) => console.error(err));
-  }, []);
+  const navigate = useNavigate();
+  const { tabValue } = useParams();
 
   return (
     <AppShell
@@ -30,6 +24,8 @@ function App() {
         <TitleBar />
         <Tabs
           defaultValue="schools"
+          value={tabValue}
+          onChange={(value) => navigate(`/${value}`)}
           classNames={{
             root: classes.tabs,
             list: classes.tabsList,
@@ -73,17 +69,10 @@ function App() {
           background: theme.colors.gray[0],
         }}
       >
-        <div>
-          <Title order={2}>Escuelas</Title>
-          <ul>
-            {users.map((u) => (
-              <li key={u.id}>{u.username} - {u.email}</li>
-            ))}
-          </ul>
-        </div>
+        <Outlet />
       </AppShell.Main>
     </AppShell>
   );
 }
 
-export default App;
+export default Layout;

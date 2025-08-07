@@ -2,19 +2,19 @@ import '@mantine/core/styles.css';
 import '@mantine/core/styles/baseline.css';
 import '@mantine/core/styles/default-css-variables.css';
 import '@mantine/core/styles/global.css';
-import { MantineProvider } from '@mantine/core';
 
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
-import App from './App';
+import Router from './Router';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <MantineProvider withGlobalStyles withNormalizeCSS>
-    <App />
-  </MantineProvider>
+  <React.StrictMode>
+    <Router />
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
