@@ -32,8 +32,10 @@ pub async fn run() {
     })
     .manage(pool)
     .invoke_handler(tauri::generate_handler![
+      handlers::user::register_admin,
+      handlers::user::register,
+      handlers::user::login,
       handlers::user::get_users,
-      handlers::user::sign_in,
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");

@@ -1,5 +1,6 @@
 import { useMantineTheme, AppShell, Container, Tabs } from '@mantine/core';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useAuth } from "../services/AuthContext";
 import { Outlet  } from "react-router-dom";
 
 import TitleBar from '../components/TitleBar';
@@ -9,6 +10,13 @@ function Layout() {
   const theme = useMantineTheme();
   const navigate = useNavigate();
   const { tabValue } = useParams();
+
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  }
 
   return (
     <AppShell
@@ -41,6 +49,7 @@ function Layout() {
             <Tabs.Tab value="programs">Programas</Tabs.Tab>
             <Tabs.Tab value="plans">Planes</Tabs.Tab>
             <Tabs.Tab value="payments" disabled>Pagos</Tabs.Tab>
+            <Tabs.Tab value='logout' onClick={handleLogout}>Cerrar sesión</Tabs.Tab>
           </Tabs.List>
           <Container
             fluid

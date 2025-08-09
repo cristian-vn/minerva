@@ -11,11 +11,7 @@ function TitleBar() {
     <Box
       data-tauri-drag-region // Permite arrastrar la ventana
       display="flex"
-      style={{
-        alignItems: "center",
-        cursor: "default",
-        height: "36px"
-      }}
+      className="titlebar"
     >
       <Title order={5}
         data-tauri-drag-region

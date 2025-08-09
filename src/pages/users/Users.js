@@ -21,7 +21,7 @@ const Users = () => {
       <Title order={2}>Usuarios</Title>
       <List>
         {users.map((u) => (
-          <List.Item key={u.id}>{u.username} - {u.email}</List.Item>
+          <List.Item key={u.id}>{u.username}</List.Item>
         ))}
       </List>
     </Container>
