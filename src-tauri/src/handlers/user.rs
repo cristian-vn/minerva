@@ -171,7 +171,7 @@ pub async fn login(
 pub async fn get_users(
   pool: tauri::State<'_, sqlx::PgPool>
 ) -> Result<Vec<HashMap<String, Value>>, String> {
-  let rows = sqlx::query("SELECT id, username FROM users")
+  let rows = sqlx::query("SELECT id, username, is_active FROM users")
     .fetch_all(pool.inner())
     .await
     .map_err(|e| e.to_string())?;
@@ -182,6 +182,7 @@ pub async fn get_users(
     let mut map = HashMap::new();
     map.insert("id".to_string(), Value::from(row.get::<i32, _>("id")));
     map.insert("username".to_string(), Value::from(row.get::<String, _>("username")));
+    map.insert("is_active".to_string(), Value::from(row.get::<bool, _>("is_active")));
 
     results.push(map);
   }

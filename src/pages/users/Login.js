@@ -11,8 +11,6 @@ import { invoke } from '@tauri-apps/api/core';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../services/AuthContext";
 
-import TitleBar from '../../components/TitleBar';
-
 import classes from './AuthenticationTitle.module.css';
 
 export default function Login() {
@@ -47,12 +45,11 @@ export default function Login() {
       fluid
       style={{
         backgroundColor: theme.colors.gray[0],
-        height: "100vh",
+        height: "calc(100vh - 36px)",
         padding: 0
       }}
     >
-      <TitleBar />
-      <Container size={420} my={40}>
+      <Container size={420} py={36}>
         <Title ta="center" className={classes.title}>Iniciar sesión</Title>
         <form withBorder onSubmit={handleLogin} shadow="sm" p={22} mt={36} radius="md">
           <TextInput label="Nombre de usuario" value={username} onChange={(e) => setUsername(e.target.value)} required radius="md" />

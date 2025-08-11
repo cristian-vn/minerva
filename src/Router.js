@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MantineProvider } from '@mantine/core';
 
+import TitleBar from './components/TitleBar';
 import Layout from "./pages/Layout";
 import Schools from "./pages/schools/Schools";
 import Users from "./pages/users/Users";
@@ -20,6 +21,7 @@ export default function App() {
     <AuthProvider>
       <BrowserRouter>
         <MantineProvider withGlobalStyles withNormalizeCSS>
+          <TitleBar />
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route element={<ProtectedRoute />}>

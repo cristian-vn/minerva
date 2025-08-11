@@ -1,0 +1,37 @@
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.links {
+  color: var(--mantine-color-gray-9);
+  text-decoration: none;
+}
+
+.title {
+  font-family: Outfit, var(--mantine-font-family);
+  font-weight: 500;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: var(--mantine-radius-md);
+  flex-wrap: nowrap;
+  padding: 4px;
+  min-width: 64px;
+  transition:
+  box-shadow 150ms ease,
+  transform 100ms ease;
+}
+
+.item:hover {
+  background-color: var(--mantine-color-gray-1);
+  box-shadow: var(--mantine-shadow-md);
+  transform: scale(1.05);
+}
